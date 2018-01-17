@@ -1,0 +1,30 @@
+--------------小说主表---2018-01-14-------------------
+drop table if exists t_novel;
+CREATE TABLE t_novel(
+  id varchar(64),--主键
+  novel_no varchar(32),--编码
+  name varchar(64),--小说名字
+  author varchar(32),--作者
+  type varchar(64),--类型
+  is_end varchar(1),--是否完结
+  chapters_numbers int,--总章节数
+  newest_numbers int --最新章节
+  ) ;
+
+-----------小说明细表-------2018-01-14--------------------
+drop table if exists t_novel_detail;
+CREATE TABLE t_novel_detail(
+  id varchar(64),--主键
+  novel_id varchar(64),--主表主键
+  number int ,--章节数
+  status varchar(1)--下载状态
+);
+
+-------------文章表---------2018-01-14--------------------------------
+drop table if exists t_novel_content;
+CREATE TABLE t_novel_content(
+  id varchar(64),
+  detail_id varchar(64),--明细表id
+  status varchar(2),--数据状态,是否已经生成txt
+  content text--小说内容
+)ENGINE=MyISAM DEFAULT CHARSET=utf8;
